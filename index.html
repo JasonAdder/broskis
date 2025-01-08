@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Upload Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Media Upload Site</h1>
+    </header>
+
+    <main>
+        <section id="upload-section">
+            <h2>Upload Your Media</h2>
+            <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+                <label for="file">Choose a file to upload:</label>
+                <input type="file" id="file" name="file" accept="image/*,video/*" required>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div id="media-gallery">
+                <p>No media uploaded yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your Media Site</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
