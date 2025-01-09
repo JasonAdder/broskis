@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki-Style Information Viewer</title>
+    <title>Category Selection</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to the Wiki-Style Info Viewer</h1>
+        <h1>Welcome to the Wiki</h1>
     </header>
 
     <main>
-        <section id="navigation">
+        <section id="selection-section">
             <h2>Select a Category</h2>
-            <form id="selection-form" action="subcategory.html">
-                <label for="category">Category:</label>
+            <form id="category-form">
+                <label for="category">Choose a category:</label>
                 <select id="category" name="category">
                     <option value="printers">Printers</option>
                     <option value="computers">Computers</option>
                     <option value="speakers">Speakers</option>
                 </select>
 
-                <label for="subcategory">Subcategory:</label>
+                <label for="subcategory">Choose a subcategory:</label>
                 <select id="subcategory" name="subcategory">
-                    <!-- Subcategories will be dynamically populated -->
+                    <option value="deskjet">DeskJet</option>
+                    <option value="officejet">OfficeJet</option>
+                    <option value="laserjet">LaserJet</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="desktop">Desktop</option>
                 </select>
 
                 <button type="submit">Submit</button>
@@ -33,9 +38,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 Wiki-Style Viewer</p>
+        <p>&copy; 2025 Your Wiki</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
