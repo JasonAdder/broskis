@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Upload Site</title>
+    <title>Item Information Upload</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Bros Group Chart</h1>
+        <h1>Upload Item Information</h1>
     </header>
 
     <main>
         <section id="upload-section">
-            <h2>Upload Your Media</h2>
-            <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
-                <label for="file">Choose a file to upload:</label>
-                <input type="file" id="file" name="file" accept="image/*,video/*" required>
-                <button type="submit">Upload</button>
+            <h2>Upload Item Information</h2>
+            <form id="upload-form" action="/upload" method="POST">
+                <label for="category">Choose a category:</label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="printers">Printers</option>
+                    <option value="computers">Computers</option>
+                    <option value="speakers">Speakers</option>
+                </select>
+
+                <label for="subcategory">Choose a subcategory:</label>
+                <select id="subcategory" name="subcategory" required>
+                    <option value="">Select a subcategory</option>
+                </select>
+
+                <label for="item-details">Enter item details (e.g., specifications):</label>
+                <textarea id="item-details" name="item-details" rows="5" placeholder="Enter details here..." required></textarea>
+
+                <button type="submit">Upload Information</button>
             </form>
         </section>
 
         <section id="gallery">
-            <h2>Gallery</h2>
-            <div id="media-gallery">
-                <p>Not media uploaded yet.</p>
+            <h2>Uploaded Items</h2>
+            <div id="item-gallery">
+                <p>No items uploaded yet.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Your Media Site</p>
+        <p>&copy; 2025 Your Item Information Site</p>
     </footer>
 
     <script src="script.js"></script>
