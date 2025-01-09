@@ -1,52 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const uploadForm = document.getElementById("upload-form");
     const categorySelect = document.getElementById("category");
     const subcategorySelect = document.getElementById("subcategory");
-    const itemGallery = document.getElementById("item-gallery");
+    const form = document.getElementById("selection-form");
+    const infoContent = document.getElementById("info-content");
 
-    // Subcategory options for each category
-    const subcategories = {
-        printers: ["Deskjet", "Officejet", "Laserjet"],
-        computers: ["Laptop", "Desktop"],
-        speakers: ["Bluetooth", "Wired"]
+    // Predefined data
+    const data = {
+        printers: {
+            deskjet: "Deskjet printers are compact and affordable, suitable for home use.",
+            officejet: "Officejet printers are designed for small office settings with higher volume needs.",
+            laserjet: "Laserjet printers are fast and efficient, ideal for businesses."
+        },
+        computers: {
+            laptop: "Laptops are portable computers, great for working on the go.",
+            desktop: "Desktops are stationary computers, offering more power and customization."
+        },
+        speakers: {
+            default: "Speakers provide audio output for computers, televisions, and more."
+        }
     };
 
-    // Handle category change to populate subcategories
+    // Populate subcategories based on selected category
     categorySelect.addEventListener("change", () => {
         const category = categorySelect.value;
-        subcategorySelect.innerHTML = '<option value="">Select a subcategory</option>'; // Reset subcategory options
-        if (category) {
-            subcategories[category].forEach(subcategory => {
+        subcategorySelect.innerHTML = ""; // Clear previous options
+
+        if (data[category]) {
+            for (const subcategory in data[category]) {
                 const option = document.createElement("option");
-                option.value = subcategory.toLowerCase();
-                option.textContent = subcategory;
+                option.value = subcategory;
+                option.textContent = subcategory.charAt(0).toUpperCase() + subcategory.slice(1);
                 subcategorySelect.appendChild(option);
-            });
+            }
         }
     });
 
     // Handle form submission
-    uploadForm.addEventListener("submit", (event) => {
+    form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent page reload
 
         const category = categorySelect.value;
         const subcategory = subcategorySelect.value;
-        const itemDetails = document.getElementById("item-details").value;
 
-        if (category && subcategory && itemDetails) {
-            const itemInfo = document.createElement("div");
-            itemInfo.classList.add("item-info");
-            itemInfo.innerHTML = `
-                <h3>${subcategory} - ${category}</h3>
-                <p>${itemDetails}</p>
-            `;
-            itemGallery.appendChild(itemInfo);
+        if (data[category] && data[category][subcategory]) {
+            infoContent.textContent = data[category][subcategory];
         } else {
-            alert("Please fill in all fields.");
+            infoContent.textContent = "No information available for the selected category.";
         }
-
-        // Reset the form
-        uploadForm.reset();
-        subcategorySelect.innerHTML = '<option value="">Select a subcategory</option>';
     });
+
+    // Trigger initial population of subcategories
+    categorySelect.dispatchEvent(new Event("change"));
 });
